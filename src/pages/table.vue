@@ -9,6 +9,51 @@
   </div>
 
   <div class="box">
+    <el-form ref="form" :model="form" label-width="180px">
+      <el-form-item label="创建时间" label-width="80px">
+         <el-col :span="3">
+           <el-date-picker type="date" placeholder="选择日期"  v-model="form.date1" style="width: 100%"></el-date-picker>
+        </el-col>
+        <el-col class="line" :span="0.7">- </el-col>
+        <el-col :span="3">
+           <el-date-picker type="date" placeholder="选择日期" v-model="form.date2" style="width: 100%"></el-date-picker>
+        </el-col>
+     
+        
+        <el-col class="line" :span="2" style="text-align:center">用户名</el-col>
+        <el-col class="line" span="3">
+           <el-input v-model="form.content" placeholder="请输入用户名" span="3"></el-input>
+        </el-col>
+        <el-col class="line" :span="2" style="text-align:center">审核</el-col>
+        <el-switch v-model="form.delivery"></el-switch>
+      </el-form-item>
+     
+      <el-form-item label="更新时间" label-width="80px">
+         <el-col :span="3">
+           <el-date-picker type="date" placeholder="选择日期"  v-model="form.date3" style="width: 100%"></el-date-picker>
+        </el-col>
+        <el-col class="line" :span="0.7">- </el-col>
+        <el-col :span="3">
+           <el-date-picker type="date" placeholder="选择日期" v-model="form.date4" style="width: 100%"></el-date-picker>
+        </el-col>
+        <el-col class="line" :span="2" style="text-align:center">标题</el-col>
+        
+        <el-col class="line" span="3">
+           <el-input v-model="form.content" placeholder="请输入标题" span="3"></el-input>
+        </el-col>
+        <el-col class="line" span="7" style="text-align:right">
+           <el-button type="primary" @click="onSubmit" >查询</el-button>
+        </el-col>
+      </el-form-item>
+     
+     
+      
+    </el-form>
+    
+ 
+
+
+
      <!-- <Row>
       
         <Col span="12">
@@ -17,7 +62,10 @@
     </Row> -->
     <el-table :data='tableData'>
       <!-- <el-table-column label="#" type="index"></el-table-column> -->
-      <el-table-column label="ID" prop="id" ></el-table-column>
+      <el-table-column label="ID" prop="id" >
+        {scope.row.id}
+        <!-- <p>{{ scope.row.id}}</p> -->
+      </el-table-column>
       <el-table-column label="标题" prop="title"></el-table-column>
       <el-table-column label="创建时间" prop="createdtime"></el-table-column>
       <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
@@ -26,7 +74,7 @@
       <el-table-column label="状态" prop="state"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <m-button type="danger" v-on:click="del">删除</m-button>
+          <m-button type="danger" @click="del(scope.$index, scope.row)">删除</m-button>
         </template>
       </el-table-column>
     </el-table>
@@ -41,14 +89,45 @@ import $ from 'jquery'
 export default{
   data() {
     return {
+       pickerOptions1: {
+          disabledDate(time) {
+            return time.getTime() > Date.now();
+          },
+        },
+        form:{
+          date1: '',
+          date2: '',
+          date3: '',
+          date4: '',
+          content:'',
+          delivery: false,
+        },
+     
       timer: null,
       activeName: '论文表格',
       tableData: [],
     }
   },
   methods:{
-    del:function(event){
-      console.log("delete")
+    del:function(index,row){
+      console.log(row)
+         $.ajax({
+          url: 'http://localhost:9090/delatepaper',
+          type: 'get',
+          data: row,
+          dataType: "text",
+          async:false,
+          success: function(data) {
+            data=JSON.parse(data)
+            console.log(data)
+            self.tableData=data
+          },
+          error: function(data) {
+            //TODO 失败
+            console.log("error", data)
+          }
+        })
+
     }
     
 
