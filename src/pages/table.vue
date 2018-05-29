@@ -9,40 +9,72 @@
   </div>
 
   <div class="box">
-     <Row>
+     <!-- <Row>
       
         <Col span="12">
             <DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
         </Col>
-    </Row>
-    <el-table>
-      <el-table-column label="#" type="index"></el-table-column>
-      <el-table-column label="ID" prop="id" width="80"></el-table-column>
-      <el-table-column label="标题" prop="action"></el-table-column>
-      <el-table-column label="创建时间" prop="result"></el-table-column>
-      <el-table-column label="更新时间" prop="desctiption"></el-table-column>
-      
-      <el-table-column label="创建时间" prop="createdAt">
-        <template slot-scope="scope">
-          {{format(scope.row.createdAt)}}
-        </template>
-      </el-table-column>
-      <el-table-column label="最后更新" prop="updatedAt">
-        <template slot-scope="scope">
-          {{format(scope.row.updatedAt)}}
-        </template>
-      </el-table-column>
+    </Row> -->
+    <el-table :data='tableData'>
+      <!-- <el-table-column label="#" type="index"></el-table-column> -->
+      <el-table-column label="ID" prop="id" ></el-table-column>
+      <el-table-column label="标题" prop="title"></el-table-column>
+      <el-table-column label="创建时间" prop="createdtime"></el-table-column>
+      <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
+    
+      <el-table-column label="用户id" prop="userid"></el-table-column>
+      <el-table-column label="状态" prop="state"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <m-button type="danger">删除</m-button>
+          <m-button type="danger" v-on:click="del">删除</m-button>
         </template>
       </el-table-column>
     </el-table>
-    </div>
-  </div>
-
+  </div> 
 </div>
+
+
 </template>
+
+<script>
+import $ from 'jquery'
+export default{
+  data() {
+    return {
+      timer: null,
+      activeName: '论文表格',
+      tableData: [],
+    }
+  },
+  methods:{
+    del:function(event){
+      console.log("delete")
+    }
+    
+
+  },
+
+  created: function() {
+    var self = this;
+    $.ajax({
+          url: 'http://localhost:9090/getPaperList',
+          type: 'get',
+          dataType: "text",
+          async:false,
+          success: function(data) {
+            data=JSON.parse(data)
+            console.log(data)
+            self.tableData=data
+          },
+          error: function(data) {
+            //TODO 失败
+            console.log("error", data)
+          }
+        })
+  },
+}
+</script>
+
 <style>
   .box-body{
     width: 100%;
