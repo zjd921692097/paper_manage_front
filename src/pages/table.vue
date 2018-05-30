@@ -22,10 +22,10 @@
         
         <el-col class="line" :span="2" style="text-align:center">用户名</el-col>
         <el-col class="line" span="3">
-           <el-input v-model="form.content" placeholder="请输入用户名" span="3"></el-input>
+           <el-input v-model="form.userId" placeholder="请输入用户名" span="3"></el-input>
         </el-col>
         <el-col class="line" :span="2" style="text-align:center">审核</el-col>
-        <el-switch v-model="form.delivery"></el-switch>
+        <el-switch v-model="form.state"></el-switch>
       </el-form-item>
      
       <el-form-item label="更新时间" label-width="80px">
@@ -39,7 +39,7 @@
         <el-col class="line" :span="2" style="text-align:center">标题</el-col>
         
         <el-col class="line" span="3">
-           <el-input v-model="form.content" placeholder="请输入标题" span="3"></el-input>
+           <el-input v-model="form.title" placeholder="请输入标题" span="3"></el-input>
         </el-col>
         <el-col class="line" span="7" style="text-align:right">
            <el-button type="primary" @click="onSubmit" >查询</el-button>
@@ -71,7 +71,9 @@
       <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
     
       <el-table-column label="用户id" prop="userid"></el-table-column>
+      <el-table-column label="阅读次数" prop="readNum"></el-table-column>
       <el-table-column label="状态" prop="state"></el-table-column>
+      
       <el-table-column label="操作">
         <template slot-scope="scope">
           <m-button type="danger" @click="del(scope.$index, scope.row)">删除</m-button>
@@ -99,8 +101,9 @@ export default{
           date2: '',
           date3: '',
           date4: '',
-          content:'',
-          delivery: false,
+          title:'',
+          userId:'',
+          state: false,
         },
      
       timer: null,
@@ -109,6 +112,27 @@ export default{
     }
   },
   methods:{
+    onSubmit:function(){
+      var self=this;
+
+      console.log(self.form)
+       $.ajax({
+          url: 'http://localhost:9090/getPaperListByCon',
+          type: 'get',
+          data: self.form,
+          dataType: "text",
+          async:false,
+          success: function(data) {
+            data=JSON.parse(data)
+            console.log(data)
+            self.tableData=data
+          },
+          error: function(data) {
+            //TODO 失败
+            console.log("error", data)
+          }
+        })
+    },
     del:function(index,row){
       console.log(row)
          $.ajax({
