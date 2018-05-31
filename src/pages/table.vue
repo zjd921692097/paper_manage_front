@@ -112,8 +112,23 @@ export default{
     }
   },
   methods:{
+    dateChange: function (deliveryDate) {
+     var time = deliveryDate;//获取当前日期空间时间
+     if (time) {
+     var date = new Date(Date.parse(time));
+     var newDate = date.getFullYear() + "-" + (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1)) + "-" + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
+      return newDate ;
+         }
+        },   
     onSubmit:function(){
       var self=this;
+      var datein;
+    
+      self.form.date1=this.dateChange(self.form.date1);
+      self.form.date2=this.dateChange(self.form.date2);
+      self.form.date3=this.dateChange(self.form.date3);
+      self.form.date4=this.dateChange(self.form.date4);
+      console.log(self.form.date1);
 
       console.log(self.form)
        $.ajax({

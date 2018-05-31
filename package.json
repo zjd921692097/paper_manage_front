@@ -1,11 +1,11 @@
 {
   "name": "vue-element-admin-tpl",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "A template for Vue",
-  "author": "lanyue <lanyueos@qq.com>",
+  "author": "zhou",
   "private": true,
   "app": {
-    "name": "基于Vue的后台管理系统模板"
+    "name": "论文管理系统"
   },
   "license": "MIT",
   "scripts": {

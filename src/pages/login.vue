@@ -9,10 +9,10 @@
     <form action="" class="login-form">
       <div class="m-list-group">
         <div class="m-list-group-item">
-          <input type="text" placeholder="Username" class="m-input" v-model="username">
+          <input type="text" placeholder="Username" class="m-input" v-model="loginInfo.username">
         </div>
         <div class="m-list-group-item">
-          <input type="password" placeholder="Password" class="m-input" v-model="password">
+          <input type="password" placeholder="Password" class="m-input" v-model="loginInfo.password">
         </div>
       </div>
       
@@ -22,35 +22,65 @@
     <p class="text-tips">
       <i class="fa fa-meetup" style="color: #29ABE2"></i>&nbsp;
      
-  </span>
+  
     </p>
   </div>
 </div>
 </template>
 <script>
 import {mapActions} from 'vuex'
+import $ from 'jquery'
+import {axios} from 'axios'
 export default {
   name: 'login',
   data () {
     return {
-      username: 'Administrator',
-      password: '123456',
+      loginInfo:{
+        username: '',
+        password: '',
+      },
       isLoging: false,
-      author: window.APP_INFO.author,
-      version: window.APP_INFO.version,
+      author: 'zhou',
+      version: '1.0.0',
       appName: window.APP_INFO.appName
     }
   },
   methods: {
     ...mapActions(['login']),
+
     handleLogin () {
-      if (!this.username || !this.password) {
-        return this.$message.warning('用户名和密码不能为空')
+      var result;
+      var self=this;
+      console.log(self.loginInfo);
+
+      if (!this.loginInfo.username || !this.loginInfo.password) {
+        return this.$message.warning('用户名和密码不能为空',{data:this.data})
       }
-      this.isLoging = true
+       $.ajax({
+          url: 'http://localhost:9090/login',
+          type: 'get',
+          data: this.loginInfo,
+          dataType: "text",
+          async:false,
+          success: function(data) {
+            data=JSON.parse(data)
+            console.log(data)
+            result=data;
+            
+          },
+          error: function(data) {
+            //TODO 失败
+            console.log("error", data)
+          }
+        })
+      if(result=='flase'){
+              
+              // this.isLoging = true
+              return this.$message.warning('用户名和密码错误',{data:this.data})
+            }
       this.login({
-        username: this.username,
-        password: this.password
+        username: this.loginInfo.username,
+        password: this.loginInfo.password
       }).then(res => {
         this.$message.success('登录成功')
         this.$router.push({name: 'home'})
