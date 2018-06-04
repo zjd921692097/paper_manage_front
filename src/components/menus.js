@@ -43,6 +43,8 @@ const menus = [
     submenu: [
       {id: 'p-data-table', name: 'p-data-table', label: '论文统计'},
       {id: 'cnode', name: 'cnode', label: '我的论文'},
+      
+      {id: 'mypaper', name: 'p-mypaper', label: '我的论文'},
       {id: 'p1', name: 'login', label: 'Login 登录'},
       {id: 'p2', name: 'p-login', label: 'Login 登录2'},
       {id: 'p3', name: 'p-register', label: 'Register 注册'},

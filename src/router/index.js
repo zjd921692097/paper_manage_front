@@ -24,12 +24,15 @@ export default new Router({
         {path: '/keyboard', name: 'c-keyboard', component: page('c-keyboard')},
         {path: '/loading', name: 'c-loading', component: page('c-loading')},
         {path: '/data-table', name: 'p-data-table', component: page('table')},
+        {path: '/mypaper', name: 'p-mypaper', component: page('mypaper')},
         {path: '/dropdown', name: 'c-dropdown', component: page('c-dropdown')},
         {path: '/navbar', name: 'c-navbar', component: page('c-navbar')},
         {path: '/container', name: 'c-container', component: page('c-container')},
         {path: '/demo', name: 'demo', component: page('demo')},
         {path: '/404', name: '404', component: page('404')},
-        {path: '/500', name: '500', component: page('500')}
+        {path: '/500', name: '500', component: page('500')},
+        {path: '/addpaper', name: 'addpaper', component: page('addpaper')},
+        {path: '/viewpaper', name: 'viewpaper', component: page('viewpaper')}
       ]
     },
     {path: '/login', name: 'login', component: page('login')},

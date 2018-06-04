@@ -23,10 +23,13 @@
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "element-ui": "^2.0.11",
+    "http-proxy-middleware": "^0.18.0",
     "iview": "^2.14.0-rc.3",
+    "jquery": "^3.3.1",
     "nprogress": "^0.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue2-editor": "^2.4.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

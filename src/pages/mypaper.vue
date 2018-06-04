@@ -1,55 +1,20 @@
 <template>
 <div class="page-body">
   <div class="page-header">
-    <h1 class="page-title">论文统计</h1>
+    <h1 class="page-title">我的论文</h1>
     <el-breadcrumb>
       <el-breadcrumb-item :to="{path: '/'}">首页</el-breadcrumb-item>
-      <el-breadcrumb-item >论文统计</el-breadcrumb-item>
+      <el-breadcrumb-item >我的论文</el-breadcrumb-item>
+
+      
     </el-breadcrumb>
+    
   </div>
 
   <div class="box">
-    <el-form ref="form" :model="form" label-width="180px">
-      <el-form-item label="创建时间" label-width="80px">
-         <el-col :span="3">
-           <el-date-picker type="date" placeholder="选择日期"  v-model="form.date1" style="width: 100%"></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="0.7">- </el-col>
-        <el-col :span="3">
-           <el-date-picker type="date" placeholder="选择日期" v-model="form.date2" style="width: 100%"></el-date-picker>
-        </el-col>
-     
-        
-        <el-col class="line" :span="2" style="text-align:center">用户名</el-col>
-        <el-col class="line" span="3">
-           <el-input v-model="form.userId" placeholder="请输入用户名" span="3"></el-input>
-        </el-col>
-        <el-col class="line" :span="2" style="text-align:center">审核</el-col>
-        <el-switch v-model="form.state"></el-switch>
-      </el-form-item>
-     
-      <el-form-item label="更新时间" label-width="80px">
-         <el-col :span="3">
-           <el-date-picker type="date" placeholder="选择日期"  v-model="form.date3" style="width: 100%"></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="0.7">- </el-col>
-        <el-col :span="3">
-           <el-date-picker type="date" placeholder="选择日期" v-model="form.date4" style="width: 100%"></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="2" style="text-align:center">标题</el-col>
-        
-        <el-col class="line" span="3">
-           <el-input v-model="form.title" placeholder="请输入标题" span="3"></el-input>
-        </el-col>
-        <el-col class="line" span="7" style="text-align:right">
-           <el-button type="primary" @click="onSubmit" >查询</el-button>
-        </el-col>
-      </el-form-item>
-     
-     
-      
-    </el-form>
-    
+   
+ 
+    <el-button type="primary" icon="el-icon-edit" circle @click="addpp"></el-button>
  
 
 
@@ -61,24 +26,25 @@
         </Col>
     </Row> -->
     <el-table :data='tableData'>
+      
       <!-- <el-table-column label="#" type="index"></el-table-column> -->
-      <el-table-column label="ID" prop="id" >
-        {scope.row.id}
-        <!-- <p>{{ scope.row.id}}</p> -->
-      </el-table-column>
+      <el-table-column label="ID" prop="id" ></el-table-column>
       <el-table-column label="标题" prop="title"></el-table-column>
       <el-table-column label="创建时间" prop="createdtime"></el-table-column>
       <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
     
-      <el-table-column label="用户id" prop="userid"></el-table-column>
+      
       <el-table-column label="阅读次数" prop="readNum"></el-table-column>
       <el-table-column label="状态" prop="state"></el-table-column>
       
-      <el-table-column label="操作">
+      <el-table-column label="操作" >
         <template slot-scope="scope">
-          <m-button type="danger" @click="del(scope.$index, scope.row)">删除</m-button>
+            <el-button icon="el-icon-search" circle @click="view(scope.$index, scope.row)"></el-button>
+          
         </template>
+        
       </el-table-column>
+    
     </el-table>
   </div> 
 </div>
@@ -120,6 +86,9 @@ export default{
       return newDate ;
          }
         },   
+        addpp:function(){
+        this.$router.push({name: 'addpaper'});
+        },
     onSubmit:function(){
       var self=this;
       var datein;
@@ -132,16 +101,18 @@ export default{
 
       console.log(self.form)
        $.ajax({
-          url: 'http://192.168.139.130:9090/getPaperListByCon',
+          url: 'http://localhost:9090/getPaperListByCon',
           type: 'get',
           data: self.form,
           dataType: "text",
-          async:false,
+          crossDomain: true,
+  
           xhrFields: {
            withCredentials: true
-       },
-       crossDomain: true,
+          },
+          crossDomain: true,
           success: function(data) {
+              
             data=JSON.parse(data)
             console.log(data)
             self.tableData=data
@@ -152,25 +123,26 @@ export default{
           }
         })
     },
-    del:function(index,row){
-      console.log(row)
-         $.ajax({
-          url: 'http://localhost:9090/delatepaper',
-          type: 'get',
-          data: row,
-          dataType: "text",
-          async:false,
-          success: function(data) {
-            data=JSON.parse(data)
-            console.log(data)
-            self.tableData=data
-          },
-          error: function(data) {
-            //TODO 失败
-            console.log("error", data)
-          }
-        })
-
+    view:function(index,row){
+         console.log(row.title,row.id)
+        //  $.ajax({
+        //   url: 'http://localhost:9090/delatepaper',
+        //   type: 'get',
+        //   data: row,
+        //   dataType: "text",
+        //   async:false,
+        //   success: function(data) {
+        //     data=JSON.parse(data)
+        //     // console.log(data)
+        //     self.tableData=data
+        //   },
+        //   error: function(data) {
+        //     //TODO 失败
+        //     console.log("error", data)
+        //   }
+        // })
+        
+         this.$router.push({name: 'viewpaper',params:{paperid:row.id}});
     }
     
 
@@ -179,10 +151,13 @@ export default{
   created: function() {
     var self = this;
     $.ajax({
-          url: 'http://localhost:9090/getPaperList',
+          url: 'http://localhost:9090/getPaperListByUser',
           type: 'get',
-          dataType: "text",
-          async:false,
+          dataType: "text",          
+          xhrFields: {
+           withCredentials: true
+           },
+          crossDomain: true,
           success: function(data) {
             data=JSON.parse(data)
             console.log(data)

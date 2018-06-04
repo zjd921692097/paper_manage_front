@@ -148,6 +148,7 @@ export default {
   created () {
     this.handleSearch()
     this.listenScroll()
+    console.log("women",this.currentTab)
   },
   mounted () {
     window.cnode = this.$refs.cnode

@@ -61,8 +61,13 @@ export default {
           type: 'get',
           data: this.loginInfo,
           dataType: "text",
-          async:false,
+          // async:false,
+           xhrFields: {
+           withCredentials: true
+        },
+       crossDomain: true,
           success: function(data) {
+            
             data=JSON.parse(data)
             console.log(data)
             result=data;
