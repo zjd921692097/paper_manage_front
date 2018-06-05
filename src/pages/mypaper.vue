@@ -4,52 +4,28 @@
     <h1 class="page-title">我的论文</h1>
     <el-breadcrumb>
       <el-breadcrumb-item :to="{path: '/'}">首页</el-breadcrumb-item>
-      <el-breadcrumb-item >我的论文</el-breadcrumb-item>
-
-      
-    </el-breadcrumb>
-    
+      <el-breadcrumb-item >我的论文</el-breadcrumb-item>     
+    </el-breadcrumb>  
   </div>
-
   <div class="box">
-   
- 
-    <el-button type="primary" icon="el-icon-edit" circle @click="addpp"></el-button>
- 
-
-
-
-     <!-- <Row>
-      
-        <Col span="12">
-            <DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
-        </Col>
-    </Row> -->
-    <el-table :data='tableData'>
-      
+    <el-button type="primary" icon="el-icon-edit" circle @click="addpp"  style="margin: 0.5em 1em 1em 0em"></el-button>
+    <el-table :data='tableData'>  
       <!-- <el-table-column label="#" type="index"></el-table-column> -->
       <el-table-column label="ID" prop="id" ></el-table-column>
       <el-table-column label="标题" prop="title"></el-table-column>
       <el-table-column label="创建时间" prop="createdtime"></el-table-column>
       <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
-    
-      
       <el-table-column label="阅读次数" prop="readNum"></el-table-column>
-      <el-table-column label="状态" prop="state"></el-table-column>
-      
+      <el-table-column label="状态" prop="state"></el-table-column>     
       <el-table-column label="操作" >
         <template slot-scope="scope">
-            <el-button icon="el-icon-search" circle @click="view(scope.$index, scope.row)"></el-button>
-          
-        </template>
-        
+            <el-button icon="el-icon-search" circle @click="view(scope.$index, scope.row)"></el-button>        
+        </template>       
       </el-table-column>
     
     </el-table>
   </div> 
 </div>
-
-
 </template>
 
 <script>

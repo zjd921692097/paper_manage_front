@@ -29,9 +29,7 @@
         </m-nav-item>
       </m-nav>
       <m-nav align="right">
-        <m-nav-item active><a href="https://www.lanyueos.com" target="_blank">主页</a></m-nav-item>
-        <m-nav-item><a href="https://blog.lanyueos.com" target="_blank">博客</a></m-nav-item>
-        <m-nav-item><a href="https://www.lanyueos.com" target="_blank">关于</a></m-nav-item>
+      
       </m-nav>
     </m-navbar>
     <p></p>

@@ -32,7 +32,8 @@ export default new Router({
         {path: '/404', name: '404', component: page('404')},
         {path: '/500', name: '500', component: page('500')},
         {path: '/addpaper', name: 'addpaper', component: page('addpaper')},
-        {path: '/viewpaper', name: 'viewpaper', component: page('viewpaper')}
+        {path: '/viewpaper', name: 'viewpaper', component: page('viewpaper')},
+        {path: '/papertype', name: 'papertype', component: page('papertype')}
       ]
     },
     {path: '/login', name: 'login', component: page('login')},

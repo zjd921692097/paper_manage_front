@@ -13,7 +13,7 @@
       :style="{height: headerHeight + 'px', color: theme.theme.activeTextColor}"
       >
       <img src="../assets/logo.png" alt="" class="header-logo">
-      <span class="header-logo-text" >控制台</span>
+      <span class="header-logo-text" >导航</span>
     </div>
     <app-side :collapse="isCollapse" :theme="theme.theme"></app-side>
   </el-aside>

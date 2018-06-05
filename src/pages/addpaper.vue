@@ -1,8 +1,8 @@
 <template>  
    <div id="app">  
-       <el-input v-model="paper.title" placeholder="请输入标题"></el-input>
+       <el-input v-model="paper.title" placeholder="请输入标题" size="small"  style="margin: 3em 10em 5em 50em;width:450px;height:20px;"></el-input>
      <vue-editor v-model="paper.content"></vue-editor>  
-      <el-button type="primary" @click="onSubmit">主要按钮</el-button>
+      <el-button type="primary" @click="onSubmit" style="margin: 1em 1em 0.5em 117em">保存</el-button>
    </div>  
  </template>  
   
@@ -19,7 +19,7 @@
        return {  
            paper:{
                 title:'',
-                content: '<h1>Some initial content</h1>'  
+                content: ''  
            },
            
        }  

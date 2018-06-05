@@ -87,7 +87,7 @@ Axios.interceptors.request.use(config => {
   // console.log(config)
   return config
 })
-
+Axios.defaults.baseURL = 'http://127.0.0.1:8888'
 // 接口错误拦截
 Axios.interceptors.response.use(res => {
   // console.log(res)

@@ -10,13 +10,11 @@
       ></i>
   </m-navbar-brand>
   <m-nav>
-    <m-nav-item><a href="https://www.lanyueos.com" target="_blank">主页</a></m-nav-item>
-    <m-nav-item><a href="https://blog.lanyueos.com" target="_blank">博客</a></m-nav-item>
-    <m-nav-item><a href="https://www.lanyueos.com" target="_blank">关于</a></m-nav-item>
+ 
   </m-nav>
   <m-nav align="right">
     <m-nav-item padding="0">
-      <a href="https://github.com/mengdu/vue-element-admin-tpl" target="_blank"><i class="fa fa-github" style="font-size: 26px;vertical-align: middle;"></i>&nbsp;Github</a>
+      <a href="https://github.com/zjd921692097/paper_manage_front" target="_blank"><i class="fa fa-github" style="font-size: 26px;vertical-align: middle;"></i>&nbsp;Github</a>
     </m-nav-item>
     <m-nav-item padding="0">
       <m-dropdown align="right" v-if="user" padding="0 10px">

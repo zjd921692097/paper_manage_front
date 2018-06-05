@@ -12,10 +12,7 @@
         </m-nav>
         <m-nav float="right">
           <m-nav-item><a href="/"><i class="fa fa-home" style="font-size: 20px;line-height: 30px"></i></a></m-nav-item>
-          <m-nav-item active><a href="https://www.lanyueos.com" target="_blank">首页</a></m-nav-item>
-          <m-nav-item><a href="https://blog.lanyueos.com" target="_blank">博客</a></m-nav-item>
-          <m-nav-item><a href="https://www.lanyueos.com" target="_blank">关于</a></m-nav-item>
-          <m-nav-item><a href="https://www.github.com/mengdu" target="_blank">Github</a></m-nav-item>
+   
           <m-nav-item>
             <span>
               <el-badge :value="5" is-dot><i class="fa fa-bell"></i></el-badge>
