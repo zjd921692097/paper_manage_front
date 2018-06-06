@@ -65,7 +65,7 @@ export default{
         addpp:function(){
         this.$router.push({name: 'addpaper'});
         },
-    onSubmit:function(){
+      onSubmit:function(){
       var self=this;
       var datein;
     
@@ -118,7 +118,7 @@ export default{
         //   }
         // })
         
-         this.$router.push({name: 'viewpaper',params:{paperid:row.id}});
+         this.$router.push({name: 'viewpaper',params:{id:row.id}});
     }
     
 

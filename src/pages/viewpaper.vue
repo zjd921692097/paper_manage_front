@@ -25,7 +25,7 @@ export default{
     VueEditor
   },
   data() {
-    paperid:''
+     id:''
      return {  
         form:{
           content:'',
@@ -61,13 +61,14 @@ export default{
   },
 
   created: function() {
-    this.paperid = this.$route.params;
-    console.log("wo",this.paperid);
+    this.id = this.$route.params;
+    console.log("wo1",this.id);
+    console.log("wo2",this.$route.params);
     var self = this;
     $.ajax({
           url: 'http://localhost:9090/viewpaper',
           type: 'get',
-          data:this.paperid,
+          data:this.id,
           dataType: "text",
           success: function(data) {
             data=JSON.parse(data)

@@ -132,7 +132,7 @@ export default{
 
       console.log(self.form)
        $.ajax({
-          url: 'http://192.168.139.130:9090/getPaperListByCon',
+          url: 'http://localhost:9090/getPaperListByCon',
           type: 'get',
           data: self.form,
           dataType: "text",
