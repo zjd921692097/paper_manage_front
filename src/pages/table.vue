@@ -67,6 +67,7 @@
         <!-- <p>{{ scope.row.id}}</p> -->
       </el-table-column>
       <el-table-column label="标题" prop="title"></el-table-column>
+      <el-table-column label="类型" prop="typeName"></el-table-column>
       <el-table-column label="创建时间" prop="createdtime"></el-table-column>
       <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
     
@@ -76,6 +77,7 @@
       
       <el-table-column label="操作">
         <template slot-scope="scope">
+          <el-button icon="el-icon-search" circle @click="view(scope.$index, scope.row)"></el-button>   
           <m-button type="danger" @click="del(scope.$index, scope.row)">删除</m-button>
         </template>
       </el-table-column>
@@ -155,9 +157,29 @@ export default{
     del:function(index,row){
       console.log(row)
          $.ajax({
-          url: 'http://localhost:9090/delatepaper',
+          url: 'http://localhost:9090/deletePaper',
           type: 'get',
           data: row,
+          dataType: "text",
+          async:false,
+            xhrFields: {
+           withCredentials: true
+       },
+       crossDomain: true,
+          success: function(data) {
+            data=JSON.parse(data)
+            console.log(data)
+            self.tableData=data
+          },
+          error: function(data) {
+            //TODO 失败
+            console.log("error", data)
+          }
+        });
+          var self = this;
+    $.ajax({
+          url: 'http://localhost:9090/getPaperList',
+          type: 'get',
           dataType: "text",
           async:false,
           success: function(data) {
@@ -171,7 +193,12 @@ export default{
           }
         })
 
+    },
+       view:function(index,row){
+         console.log(row.title,row.id)        
+         this.$router.push({name: 'viewpapermanage',params:{id:row.id}});
     }
+    
     
 
   },

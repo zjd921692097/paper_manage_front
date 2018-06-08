@@ -11,7 +11,7 @@
     <el-button type="primary" icon="el-icon-edit" circle @click="addpp"  style="margin: 0.5em 1em 1em 0em"></el-button>
     <el-table :data='tableData'>  
       <!-- <el-table-column label="#" type="index"></el-table-column> -->
-      <el-table-column label="ID" prop="id" ></el-table-column>
+      <!-- <el-table-column label="ID" prop="id" ></el-table-column> -->
       <el-table-column label="标题" prop="title"></el-table-column>
       <el-table-column label="创建时间" prop="createdtime"></el-table-column>
       <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
@@ -100,24 +100,7 @@ export default{
         })
     },
     view:function(index,row){
-         console.log(row.title,row.id)
-        //  $.ajax({
-        //   url: 'http://localhost:9090/delatepaper',
-        //   type: 'get',
-        //   data: row,
-        //   dataType: "text",
-        //   async:false,
-        //   success: function(data) {
-        //     data=JSON.parse(data)
-        //     // console.log(data)
-        //     self.tableData=data
-        //   },
-        //   error: function(data) {
-        //     //TODO 失败
-        //     console.log("error", data)
-        //   }
-        // })
-        
+         console.log(row.title,row.id)        
          this.$router.push({name: 'viewpaper',params:{id:row.id}});
     }
     

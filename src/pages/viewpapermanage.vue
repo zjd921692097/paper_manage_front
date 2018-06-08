@@ -1,9 +1,16 @@
 <template>
 <div>
   <div><el-input style="margin: 2em 10em 0em 35em;width:400px;" placeholder="请输入内容"  v-model="mypaper.title"  :disabled="true"></el-input></div>
-  
+   
   <div>
-    <el-button type="primary" icon="el-icon-edit" circle @click="resetpp"  style="margin: 0em 3em 1em 1em"></el-button>
+    <el-button type="primary"    @click="check();dialogVisible = true" style="margin: 0em 3em 1em 1em">审核</el-button>
+    <el-dialog title="审核"  :visible.sync="dialogVisible"  width="13%" :before-close="handleClose">
+  
+  
+    <el-button type="primary" @click="dialogVisible = false">通过</el-button>
+    <el-button type="primary" @click="dialogVisible = false">不通过</el-button>
+  
+</el-dialog>
     <span >阅读数：{{mypaper.readNum}}</span>
     <span style="margin: 0em 0em 0em 20em">类型：{{mypaper.typeName}}</span>
     <span style="margin: 0em 0em 0em 20em">创建时间：{{mypaper.createdtime}}</span>
@@ -12,7 +19,7 @@
 
     </div>
   <div> <vue-editor id="aaaa"  v-model="mypaper.content" :disabled="form.disabled" style="margin: 0em 2em 1em 1em;height=100px"></vue-editor></div>
-  <el-button type="primary" @click="onSubmit" style="margin: 1em 1em 0.5em 117em">保存</el-button>
+ 
 </div>
     
 </template>
@@ -29,9 +36,10 @@ export default{
   data() {
      id:''
      return {  
+         dialogVisible: false,
         form:{
           content:'',
-         
+          
           disabled: true
         },
         mypaper: {},
@@ -39,26 +47,12 @@ export default{
     }
   },
   methods:{
+     
+    
    resetpp:function(){
     this.form.disabled=false;   
     },
-    onSubmit:function(){
-      $.ajax({
-          url: 'http://localhost:9090/updatepaper',
-          type: 'get',
-          data:this.mypaper,
-          dataType: "text",
-          success: function(data) {
-            data=JSON.parse(data)
-            console.log(data)
-           
-          },
-          error: function(data) {
-            //TODO 失败
-            console.log("error", data)
-          }
-        })
-    }
+   
     
   },
 
