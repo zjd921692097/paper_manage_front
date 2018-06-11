@@ -74,13 +74,18 @@
       <el-table-column label="用户id" prop="userid"></el-table-column>
       <el-table-column label="阅读次数" prop="readNum"></el-table-column>
       <el-table-column label="状态" prop="state"></el-table-column>
-      
+      <el-table-column label="审核" >
+        <template slot-scope="scope"> 
+          <m-button type="primary" @click="check">审核</m-button>
+        </template>
+      </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button icon="el-icon-search" circle @click="view(scope.$index, scope.row)"></el-button>   
           <m-button type="danger" @click="del(scope.$index, scope.row)">删除</m-button>
         </template>
       </el-table-column>
+      
     </el-table>
   </div> 
 </div>
