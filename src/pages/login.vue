@@ -31,6 +31,10 @@
 import {mapActions} from 'vuex'
 import $ from 'jquery'
 import {axios} from 'axios'
+function getAccount () {
+  
+  return account;
+}
 export default {
   name: 'login',
   data () {
@@ -43,6 +47,8 @@ export default {
       author: 'zhou',
       version: '1.0.0',
       appName: window.APP_INFO.appName,
+      account:'',
+      getAccount,
       
     }
   },
@@ -67,7 +73,9 @@ export default {
           crossDomain: true,
           success: function(data) {          
             data=JSON.parse(data);
-            console.log("data",data);   
+            console.log("data",data);  
+            this.account=data;
+            console.log(this.account); 
             result=data.toString();   
             console.log("result1",result)   
                        

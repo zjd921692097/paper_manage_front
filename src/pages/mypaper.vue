@@ -16,7 +16,8 @@
       <el-table-column label="创建时间" prop="createdtime"></el-table-column>
       <el-table-column label="更新时间" prop="updatedtime"></el-table-column>
       <el-table-column label="阅读次数" prop="readNum"></el-table-column>
-      <el-table-column label="状态" prop="state"></el-table-column>     
+      <el-table-column label="状态" prop="state"></el-table-column>  
+        
       <el-table-column label="操作" >
         <template slot-scope="scope">
             <el-button icon="el-icon-search" circle @click="view(scope.$index, scope.row)"></el-button>        

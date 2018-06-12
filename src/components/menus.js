@@ -7,6 +7,7 @@ const menus = [
     submenu: [
       {id: 'mypaper', name: 'p-mypaper', label: '我的论文'},
       {id: 'addpaper', name: 'addpaper', label: '登记论文'},
+      {id: 'papertype', name: 'papertype', label: '论文类型'},
     ]
   },
   {
@@ -15,8 +16,9 @@ const menus = [
     label: '论文管理',
     submenu: [
       {id: 'p-data-table', name: 'p-data-table', label: '论文统计'},
+      {id: 'log', name: 'log', label: '审核日志'},
       {id: 'cnode', name: 'cnode', label: '123'},
-      {id: 'papertype', name: 'papertype', label: '论文类型'},
+      
       
 
     ]

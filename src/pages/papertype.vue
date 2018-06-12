@@ -9,7 +9,7 @@
   </div>
   <div class="box">
     <el-button type="primary" icon="el-icon-edit" circle @click="dialogVisible = true"  style="margin: 0.5em 1em 1em 0em"></el-button>
-    <el-dialog title="提示"  :visible.sync="dialogVisible"  width="30%" :before-close="handleClose">
+    <el-dialog title="请输入类型"  :visible.sync="dialogVisible"  width="30%" :before-close="handleClose">
       <el-form :model="form">
     <el-form-item label="类型名称" :label-width="formLabelWidth">
       <el-input v-model="form.name" auto-complete="off"></el-input>

@@ -71,7 +71,7 @@
             console.log("error", data)
           }
         })
-            
+          this.$router.push({name: 'p-mypaper'})
         console.log("wo",this.paper.content);
        }  
 

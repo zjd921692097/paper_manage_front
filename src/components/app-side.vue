@@ -14,7 +14,9 @@
 </template>
 <script type="text/javascript">
 import VMenu from './vmenu'
-import menus from './menus'
+import menus1 from './menus'
+import menus2 from './menus2'
+import $ from 'jquery'
 export default {
   props: {
     collapse: Boolean,
@@ -25,9 +27,10 @@ export default {
   },
   data () {
     return {
-      menus,
+      menus:menus1,
       defaultActive: 'home',
-      test: 'asdfasdf'
+      test: 'asdfasdf',
+      account:''
     }
   },
   watch: {
@@ -42,6 +45,31 @@ export default {
     }
   },
   created () {
+    var self=this;
+     $.ajax({
+          url: 'http://localhost:9090/getLoginInfo',
+          type: 'Post',
+         
+          dataType: "text",
+          async:false,
+          xhrFields: {
+           withCredentials: true
+          },
+          crossDomain: true,
+          success: function(data) {
+            data=JSON.parse(data)
+            console.log(data)
+            self.account=data;
+          },
+          error: function(data) {
+            //TODO 失败
+            console.log("error", data)
+          }
+        })
+        if(this.account.type==1){
+          console.log("type",this.account.type)
+          this.menus=menus2
+        }
     this.setCurrentRoute()
   }
 }

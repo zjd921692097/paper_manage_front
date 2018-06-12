@@ -35,6 +35,7 @@ export default new Router({
         {path: '/viewpaper', name: 'viewpaper', component: page('viewpaper')},
         {path: '/papertype', name: 'papertype', component: page('papertype')},
         {path: '/viewpapermanage', name: 'viewpapermanage', component: page('viewpapermanage')},
+        {path: '/log', name: 'log', component: page('log')},
       ]
     },
     {path: '/login', name: 'login', component: page('login')},
