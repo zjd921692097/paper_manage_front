@@ -24,8 +24,8 @@
         <el-col class="line" span="3">
            <el-input v-model="form.userId" placeholder="请输入用户名" span="3"></el-input>
         </el-col>
-        <el-col class="line" :span="2" style="text-align:center">审核</el-col>
-        <el-switch v-model="form.state"></el-switch>
+       
+        
       </el-form-item>
      
       <el-form-item label="更新时间" label-width="80px">
@@ -106,7 +106,7 @@ export default{
           date4: '',
           title:'',
           userId:'',
-          state: false,
+          
         },
      
       timer: null,

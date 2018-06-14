@@ -17,7 +17,7 @@ const menus = [
     submenu: [
       {id: 'p-data-table', name: 'p-data-table', label: '论文统计'},
       {id: 'log', name: 'log', label: '审核日志'},
-      {id: 'cnode', name: 'cnode', label: '123'},
+
       
       
 

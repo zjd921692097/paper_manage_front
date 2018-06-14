@@ -70,6 +70,10 @@ export default{
           type: 'get',
           data:this.form,
           dataType: "text",
+           xhrFields: {
+          withCredentials: true
+          },
+          crossDomain: true,
           success: function(data) {
             data=JSON.parse(data)
             console.log(data)
