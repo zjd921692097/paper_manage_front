@@ -67,7 +67,7 @@ export default{
     checkto:function(){
        $.ajax({
           url: 'http://localhost:9090/checkPaper',
-          type: 'get',
+          type: 'post',
           data:this.form,
           dataType: "text",
            xhrFields: {
@@ -95,7 +95,7 @@ export default{
     var self = this;
     $.ajax({
           url: 'http://localhost:9090/viewpaper',
-          type: 'get',
+          type: 'post',
           data:this.id,
           dataType: "text",
           success: function(data) {

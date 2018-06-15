@@ -79,7 +79,7 @@ export default{
       console.log(self.form)
        $.ajax({
           url: 'http://localhost:9090/getPaperListByCon',
-          type: 'get',
+          type: 'post',
           data: self.form,
           dataType: "text",
           crossDomain: true,
@@ -112,7 +112,7 @@ export default{
     var self = this;
     $.ajax({
           url: 'http://localhost:9090/getPaperListByUser',
-          type: 'get',
+          type: 'post',
           dataType: "text",          
           xhrFields: {
            withCredentials: true

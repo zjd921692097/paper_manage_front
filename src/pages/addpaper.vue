@@ -51,7 +51,7 @@
        onSubmit:function(){
            $.ajax({
           url: 'http://localhost:9090/addpaper',
-          type: 'get',
+          type: 'post',
           data: this.paper,
           dataType: "text",
           crossDomain: true,

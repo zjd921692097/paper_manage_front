@@ -52,7 +52,7 @@ export default{
       console.log("thisid",this.form)
       $.ajax({
           url: 'http://localhost:9090/updatePaper',
-          type: 'get',
+          type: 'post',
           data:this.form,
           dataType: "text",
           success: function(data) {
@@ -71,7 +71,7 @@ export default{
       console.log("thisid",this.id)
        $.ajax({
           url: 'http://localhost:9090/submitCheckPaper',
-          type: 'get',
+          type: 'post',
           data:this.id,
           dataType: "text",
           async:false,
@@ -103,7 +103,7 @@ export default{
     var self = this;
     $.ajax({
           url: 'http://localhost:9090/viewpaper',
-          type: 'get',
+          type: 'post',
           data:this.id,
           dataType: "text",
            async:false,

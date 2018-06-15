@@ -140,7 +140,7 @@ export default{
         var self=this
          $.ajax({
           url: 'http://localhost:9090/getLogs',
-          type: 'get',
+          type: 'post',
           data:this.form,
           dataType: "text",
           async:false,
@@ -164,7 +164,7 @@ export default{
     var self = this;
     $.ajax({
           url: 'http://localhost:9090/getLogs',
-          type: 'get',
+          type: 'post',
           data:this.form,
           dataType: "text",
           async:false,
@@ -180,7 +180,7 @@ export default{
         })
         $.ajax({
           url: 'http://localhost:9090/getTotal',
-          type: 'get',
+          type: 'post',
           dataType: "text",
           async:false,
           success: function(data) {

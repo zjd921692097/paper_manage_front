@@ -20,7 +20,7 @@
         </el-col>
      
         
-        <el-col class="line" :span="2" style="text-align:center">用户名</el-col>
+        <el-col class="line" :span="2" style="text-align:center">用户ID</el-col>
         <el-col class="line" span="3">
            <el-input v-model="form.userId" placeholder="请输入用户名" span="3"></el-input>
         </el-col>
@@ -136,7 +136,7 @@ export default{
       console.log(self.form)
        $.ajax({
           url: 'http://localhost:9090/getPaperListByCon',
-          type: 'get',
+          type: 'post',
           data: self.form,
           dataType: "text",
           async:false,
@@ -159,7 +159,7 @@ export default{
       console.log(row)
          $.ajax({
           url: 'http://localhost:9090/deletePaper',
-          type: 'get',
+          type: 'post',
           data: row,
           dataType: "text",
           async:false,
@@ -180,7 +180,7 @@ export default{
           var self = this;
     $.ajax({
           url: 'http://localhost:9090/getPaperList',
-          type: 'get',
+          type: 'post',
           dataType: "text",
           async:false,
           success: function(data) {
@@ -208,7 +208,7 @@ export default{
     var self = this;
     $.ajax({
           url: 'http://localhost:9090/getPaperList',
-          type: 'get',
+          type: 'post',
           dataType: "text",
           async:false,
           success: function(data) {

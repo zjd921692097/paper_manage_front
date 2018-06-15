@@ -83,7 +83,7 @@ export default{
        self.form.name=row.name;
        $.ajax({
           url: 'http://localhost:9090/deletePaperType',
-          type: 'get',
+          type: 'post',
           dataType: "text",
           data:self.form,
            async:false,
